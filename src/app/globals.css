@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #0e141b;
+  --ink-soft: #1a2430;
+  --fog: #e8eef4;
+  --mist: #c5d0db;
+  --paper: #f3f6f9;
+  --teal: #0f766e;
+  --teal-bright: #14b8a6;
+  --amber: #c2410c;
+  --amber-soft: #fdba74;
+  --line: rgba(14, 20, 27, 0.12);
+  --glow: rgba(20, 184, 166, 0.18);
+  --danger: #b91c1c;
+  --ok: #047857;
+  --background: var(--paper);
+  --foreground: var(--ink);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(20, 184, 166, 0.16), transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, rgba(194, 65, 12, 0.1), transparent 50%),
+    linear-gradient(180deg, #eef3f7 0%, var(--paper) 40%, #e7edf3 100%);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+::selection {
+  background: rgba(20, 184, 166, 0.28);
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-body), sans-serif;
+}
+
+.font-mono-num {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.grid-noise {
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent 80%);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-line {
+  0%,
+  100% {
+    transform: scaleX(0.35);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.anim-rise {
+  animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.anim-rise-delay-1 {
+  animation-delay: 0.08s;
+}
+.anim-rise-delay-2 {
+  animation-delay: 0.16s;
+}
+.anim-rise-delay-3 {
+  animation-delay: 0.24s;
+}
+
+.pulse-line {
+  transform-origin: left center;
+  animation: pulse-line 2.8s ease-in-out infinite;
+}
+
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(14, 20, 27, 0.06),
+    rgba(20, 184, 166, 0.18),
+    rgba(14, 20, 27, 0.06)
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
